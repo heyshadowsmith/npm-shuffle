@@ -1,5 +1,5 @@
 const axios = require('axios')
-const packages = require("all-the-package-names")
+const packages = require('all-the-package-names')
 
 export default async (_request, res) => {
   const npmPackage = packages[Math.floor(Math.random() * packages.length)]

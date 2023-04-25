@@ -46,7 +46,7 @@
     createApp({
         async mounted() {
             try {
-                let response = await axios.get('/api/shuffle')
+                let response = await axios.get('/api')
                 window.location.href = response.data.npmURL
             } catch (error) {
                 console.error(error)
