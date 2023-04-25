@@ -45,8 +45,12 @@
 
     createApp({
         async mounted() {
-            let response = await axios.get('/api')
-            window.location.href = response.data.npmURL
+            try {
+                let response = await axios.get('/api')
+                window.location.href = response.data.npmURL
+            } catch (error) {
+                console.error(error)
+            }
         }
     }).mount('#app')
     </script>
