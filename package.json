@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "all-the-package-names": "^2.0.745"
+    "all-the-package-names": "^2.0.745",
+    "axios": "^1.3.6"
   },
   "devDependencies": {
     "vercel": "^28.20.0"

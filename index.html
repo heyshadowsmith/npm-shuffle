@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon-16x16.png">
+    <title>npm Shuffle | Stumble upon random npm packages</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .page-accent {
+            position: relative;
+            padding: 8px 0;
+            border-width: 10px 0 0;
+            border-top-style: solid;
+            -o-border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+            border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+        }
+
+        #app {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-accent" />
+    <div id="app">
+        <img src="logo.svg" alt="npm Shuffle Logo" style="width: 100px; height: auto;">
+        <p>Finding a random npm package...</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"></script>
+    <script>
+    const { createApp } = Vue
+
+    createApp({
+        async mounted() {
+            let response = await axios.get('/api')
+            window.location.href = response.data.npmURL
+        }
+    }).mount('#app')
+    </script>
+</body>
+</html>
