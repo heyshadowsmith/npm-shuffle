@@ -11,28 +11,29 @@
         body {
             margin: 0;
             font-family: sans-serif;
-        }
-
-        .page-accent {
-            position: relative;
-            padding: 8px 0;
             border-width: 10px 0 0;
             border-top-style: solid;
             -o-border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
             border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #app {
-            margin-top: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
+
+        p {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
-    <div class="page-accent" />
     <div id="app">
         <img src="logo.svg" alt="npm Shuffle Logo" style="width: 100px; height: auto;">
         <p>Finding a random npm package...</p>
