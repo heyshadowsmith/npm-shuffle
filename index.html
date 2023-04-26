@@ -38,22 +38,15 @@
         <img src="logo.svg" alt="npm Shuffle Logo" style="width: 100px; height: auto;">
         <p>Finding a random npm package...</p>
     </div>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
     <script>
-    const { createApp } = Vue
-
-    createApp({
-        async mounted() {
-            try {
-                let response = await axios.get('/api')
-                window.location.href = response.data.npmURL
-            } catch (error) {
-                console.error(error)
-            }
+        async function redirectToNpmURL() {
+            let response = await fetch('/api')
+            let data = await response.json()
+            window.location.href = data.npmURL
         }
-    }).mount('#app')
+        
+        redirectToNpmURL()
     </script>
 </body>
 </html>
