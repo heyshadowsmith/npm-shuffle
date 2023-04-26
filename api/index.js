@@ -2,19 +2,17 @@ const fetch = require('node-fetch')
 const packages = require('all-the-package-names')
 
 export default async (req, res) => {
-  let monthlyDownloads = req.query?.downloads ?? 0
-  let downloads = 0
+  // Vercel times out before this finishes //
+  // let monthlyDownloads = req.query?.downloads ?? 0
+  // let downloads = 0
 
-  let npmPackage = pickNpmPackage()
-  downloads = await getDownloads(npmPackage)
+  // let npmPackage = pickNpmPackage()
+  // downloads = await getDownloads(npmPackage)
 
-  do {
-    npmPackage = pickNpmPackage()
-    downloads = await getDownloads(npmPackage)
-  } while (downloads <= monthlyDownloads)
-
-  console.log('Downloads:', downloads)
-  console.log('Monthly Downloads:', monthlyDownloads)
+  // do {
+  //   npmPackage = pickNpmPackage()
+  //   downloads = await getDownloads(npmPackage)
+  // } while (downloads <= monthlyDownloads)
   
   try {
     const response = await fetch(`https://registry.npmjs.org/${npmPackage}`)
