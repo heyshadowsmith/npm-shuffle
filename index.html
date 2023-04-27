@@ -69,7 +69,7 @@
             const response1 = await fetch('https://raw.githubusercontent.com/nice-registry/all-the-package-names/master/names.json')
             const npmPackages = await response1.json()
             const npmPackage = npmPackages[Math.floor(Math.random() * npmPackages.length)]
-            // window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
+            window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
         }
         
         redirectToNpmURL()
