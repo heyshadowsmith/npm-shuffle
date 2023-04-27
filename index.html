@@ -42,9 +42,10 @@
     
     <script>
         async function redirectToNpmURL() {
-            let response = await fetch('/api')
-            let data = await response.json()
-            window.location.href = data.npmURL
+            const response1 = await fetch('https://raw.githubusercontent.com/nice-registry/all-the-package-names/master/names.json')
+            const npmPackages = await response1.json()
+            const npmPackage = npmPackages[Math.floor(Math.random() * npmPackages.length)]
+            window.location.href = `https://www.npmjs.com/package/${npmPackage}`
         }
         
         redirectToNpmURL()
