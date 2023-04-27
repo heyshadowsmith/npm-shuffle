@@ -29,14 +29,38 @@
             align-items: center;
         }
 
+        .logo {
+            width: 100px; 
+            height: auto;
+            animation: shake 2s infinite;
+        }
+
         p {
             margin-bottom: 0;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            75% { 
+                transform: rotate(270deg);
+            }
+            100% { 
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
     <div class="logo__container">
-        <img src="logo.svg" alt="npm Shuffle Logo" style="width: 100px; height: auto;">
+        <img class="logo" src="logo.svg" alt="npm Shuffle Logo">
         <p>Finding a random npm package...</p>
     </div>
     
@@ -45,7 +69,7 @@
             const response1 = await fetch('https://raw.githubusercontent.com/nice-registry/all-the-package-names/master/names.json')
             const npmPackages = await response1.json()
             const npmPackage = npmPackages[Math.floor(Math.random() * npmPackages.length)]
-            window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
+            // window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
         }
         
         redirectToNpmURL()
