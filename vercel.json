@@ -1,1 +1,1 @@
-{\n  \"version\": \"2\",\n  \"routes\": [\n    {\n      \"src\": \"/api/(.*)\",\n      \"dest\": \"/api/index.js\"\n    }\n  ]\n}
+{\n  "functions": {\n    "api/random-package.js": {\n      "memory": 128,\n      "maxDuration": 10\n    }\n  },\n  "routes": [\n    {\n      "src": "/api/random-package",\n      "dest": "/api/random-package.js"\n    }\n  ]\n}
