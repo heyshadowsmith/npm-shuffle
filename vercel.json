@@ -1,1 +1,1 @@
-{"version":2,"builds":[{"src":"api/**/*.js","use":"@vercel/node"}],"routes":[{"src":"/api/(.*)","dest":"/api/$1"},{"src":"/(.*)","dest":"/$1"}],"headers":[{"source":"/api/(.*)","headers":[{"key":"Cache-Control","value":"s-maxage=3600, stale-while-revalidate=86400"}]}]}
+{\n  \"version\": \"2\",\n  \"routes\": [\n    {\n      \"src\": \"/api/(.*)\",\n      \"dest\": \"/api/index.js\"\n    }\n  ]\n}
