@@ -75,10 +75,35 @@
     
     <script>
         async function redirectToNpmURL() {
-            const response1 = await fetch('https://raw.githubusercontent.com/nice-registry/all-the-package-names/master/names.json')
-            const npmPackages = await response1.json()
-            const npmPackage = npmPackages[Math.floor(Math.random() * npmPackages.length)]
-            window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
+            try {
+                const response = await fetch('/api/random-package')
+                
+                if (!response.ok) {
+                    throw new Error(`API request failed: ${response.status}`)
+                }
+                
+                const data = await response.json()
+                
+                if (data.url) {
+                    window.location.assign(data.url)
+                } else if (data.package) {
+                    window.location.assign(`https://www.npmjs.com/package/${data.package}`)
+                } else {
+                    throw new Error('Invalid response from API')
+                }
+            } catch (error) {
+                console.error('Error fetching random package:', error)
+                // Fallback to original method if serverless function fails
+                try {
+                    const response1 = await fetch('https://raw.githubusercontent.com/nice-registry/all-the-package-names/master/names.json')
+                    const npmPackages = await response1.json()
+                    const npmPackage = npmPackages[Math.floor(Math.random() * npmPackages.length)]
+                    window.location.assign(`https://www.npmjs.com/package/${npmPackage}`)
+                } catch (fallbackError) {
+                    console.error('Fallback also failed:', fallbackError)
+                    document.querySelector('p').textContent = 'Sorry, something went wrong. Please try again later.'
+                }
+            }
         }
         
         redirectToNpmURL()
